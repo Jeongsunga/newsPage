@@ -1,34 +1,32 @@
 let newsList = []
+let url = new URL(`https://newspage100.netlify.app/top-headlines?country=kr`)
 const menus = document.querySelectorAll(".menus button")
+const sideMenus = document.querySelectorAll(".side-menu-list button")
 menus.forEach(menu => menu.addEventListener("click", (event)=>getNewsByCategory(event)))
+sideMenus.forEach(menu => menu.addEventListener("click", (event)=>getNewsByCategory(event)))
 
-const getLatestNews = async () => {
-    const url = new URL(`https://newspage100.netlify.app/top-headlines?country=kr`)
+const getNews = async() => {
     const response = await fetch(url)
     const data = await response.json()
     newsList = data.articles
-    console.log(newsList)
     render()
+}
+
+const getLatestNews = async () => {
+    url = new URL(`https://newspage100.netlify.app/top-headlines?country=kr`)
+    getNews()
 }
 
 const getNewsByCategory = async (event) => {
     const category = event.target.textContent.toLowerCase()
-    console.log("category", category)
-    const url = new URL(`https://newspage100.netlify.app/top-headlines?country=kr&category=${category}`)
-    const response = await fetch(url)
-    const data = await response.json()
-    newsList = data.articles
-    render()
+    url = new URL(`https://newspage100.netlify.app/top-headlines?country=kr&category=${category}`)
+    getNews()
 }
 
 const searchNews = async() => {
     const keyword = document.getElementById("search-input").value
-    console.log("keyword", keyword)
-    const url = new URL(`https://newspage100.netlify.app/top-headlines?country=kr&q=${keyword}`)
-    const response = await fetch(url)
-    const data = await response.json()
-    newsList = data.articles
-    render()
+    url = new URL(`https://newspage100.netlify.app/top-headlines?country=kr&q=${keyword}`)
+    getNews()
 }
 
 const render = () => {
