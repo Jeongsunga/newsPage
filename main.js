@@ -1,5 +1,9 @@
 let newsList = []
 let url = new URL(`https://newspage100.netlify.app/top-headlines?country=kr`)
+let totalResults = 0
+let page = 1
+const pageSize = 10
+const groupSize = 5
 const menus = document.querySelectorAll(".menus button")
 const sideMenus = document.querySelectorAll(".side-menu-list button")
 menus.forEach(menu => menu.addEventListener("click", (event)=>getNewsByCategory(event)))
@@ -7,6 +11,8 @@ sideMenus.forEach(menu => menu.addEventListener("click", (event)=>getNewsByCateg
 
 const getNews = async() => {
     try{
+        url.searchParams.set("page", page) // &page=page
+        url.searchParams.set("pageSize", pageSize)
         const response = await fetch(url)
         const data = await response.json()
         if(response.status === 200){
@@ -14,7 +20,9 @@ const getNews = async() => {
                 throw new Error("No result for this search")
             }
             newsList = data.articles
+            totalResults = data.totalResults
             render()
+            paginationRender()
         }else{
             throw new Error(data.message)
         }
@@ -71,6 +79,32 @@ const errorRender = (errorMessage) => {
     </div>`
 
     document.getElementById("news-board").innerHTML = errorHTML
+}
+
+const paginationRender = () => {
+    //totalResult & Page & PageSize & GroupSize 
+    // PageGroup & lastPage & firstPage & totalPages
+    const pageGroup = Math.ceil(page / groupSize)
+    const lastPage = pageGroup * groupSize
+    const totalPages = Math.ceil(totalResults / pageSize)
+    // 마지막 페이지 그룹이 그룹 사이즈보다 작을 경우, lastPage = totalPages
+    if(lastPage > totalPages){
+        lastPage = totalPages
+    }
+    const firstPage = lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1);
+
+    let paginationHTML = ``
+    for(let i = firstPage; i <= lastPage; i++){
+        paginationHTML += `<li class="page-item ${i===page?"active":""}" onclick="moveToPage(${i})"><a class="page-link" href="#">${i}</a></li>`
+    }
+    document.querySelector(".pagination").innerHTML = paginationHTML
+
+}
+
+const moveToPage = (pageNum) => {
+    console.log("movetopage", pageNum)
+    page = pageNum
+    getNews()
 }
 
 const openNav = () => {
