@@ -43,7 +43,11 @@ const getLatestNews = async () => {
 
 const getNewsByCategory = async (event) => {
     const category = event.target.textContent.toLowerCase()
-    url = new URL(`https://newspage100.netlify.app/top-headlines?country=kr&category=${category}`)
+    if (category === "all") {
+        url = new URL(`https://newspage100.netlify.app/top-headlines?country=kr`);
+    } else {
+        url = new URL(`https://newspage100.netlify.app/top-headlines?country=kr&category=${category}`);
+    }
     page = 1
     await getNews()
 }
