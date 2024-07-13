@@ -10,7 +10,11 @@ menus.forEach(menu => menu.addEventListener("click", (event)=>getNewsByCategory(
 sideMenus.forEach(menu => menu.addEventListener("click", (event)=> {getNewsByCategory(event); closeNav();}))
 let topButton = document.getElementById("topBtn");
 window.onscroll = function() {scrollFunction()};
-
+document.getElementById("search-input").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        searchNews();
+    }
+});
 
 const getNews = async(category) => {
     try{
