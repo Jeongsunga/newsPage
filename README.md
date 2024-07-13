@@ -1,6 +1,6 @@
 # 뉴스 타임즈 만들기
 https://newspage100.netlify.app/
-<img width="1220" alt="image" src="https://github.com/user-attachments/assets/bed2edb3-645f-40b6-ab61-b9b06d750af6">
+<img width="1222" alt="image" src="https://github.com/user-attachments/assets/bd123a7b-7aa1-4766-b80e-62f8043ab545">
 <img width="1220" alt="image" src="https://github.com/user-attachments/assets/3361d84e-7521-4dd1-ad73-c0213188725a">
 <img width="419" alt="image" src="https://github.com/user-attachments/assets/4565eaff-564d-4090-83b5-9817289ea312">
 <img width="413" alt="image" src="https://github.com/user-attachments/assets/f97c5007-9ce4-4b58-bab1-a1cf008b1b62">
@@ -24,7 +24,10 @@ https://newspage100.netlify.app/
 *  모바일 버전에서 카테고리를 선택한 후 X 표시를 눌러줘야 사이드 메뉴가 닫히고 기사를 볼 수 있다.
   -> 카테고리 선택 시 자동으로 사이드 메뉴가 닫히도록 수정했다.
 * 모바일 버전에서 사이드 메뉴가 나와있을 때 페이지네이션이 보인다.
-  <img width="227" alt="image" src="https://github.com/user-attachments/assets/69284478-4085-4275-8149-4c5e1c88f668">
+  
+  <img width="413" alt="image" src="https://github.com/user-attachments/assets/69284478-4085-4275-8149-4c5e1c88f668">
   -> z-index 값을 조정해서 보이지 않게 수정했다.
 * 기사를 아래로 내리고 다시 위로 스크롤하기 불편했다.
     -> TOP 버튼을 만들어서 맨 위로 올릴 수 있는 기능을 구현했다.
+* 카테고리별로 기사를 본 후 전체 기사를 보고 싶을 때 새로고침해야 한다.
+    -> All 버튼을 만들어서 전체 기사를 볼 수 있는 기능을 구현했다.
