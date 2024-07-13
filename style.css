@@ -51,7 +51,7 @@ body{
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     top: 0;
     left: 0;
     background-color: burlywood;
@@ -106,4 +106,24 @@ body{
     .menus{
         display: none;
     }
+}
+
+.top-button {
+    display: none; /* 맨 위일 때 보이지 않음 */
+    position: fixed; /* 위치는 오른쪽 아래로 고정 */
+    bottom: 20px; 
+    right: 30px; 
+    z-index: 99; 
+    border: none; 
+    outline: none; 
+    background-color: #555; 
+    color: white; 
+    cursor: pointer; 
+    padding: 15px; 
+    border-radius: 10px; 
+    font-size: 18px; 
+}
+
+.top-button:hover {
+    background-color: #333; 
 }
