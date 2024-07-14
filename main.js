@@ -6,8 +6,8 @@ const pageSize = 10
 const groupSize = 5
 const menus = document.querySelectorAll(".menus button")
 const sideMenus = document.querySelectorAll(".side-menu-list button")
-menus.forEach(menu => menu.addEventListener("click", (event)=>getNewsByCategory(event)))
-sideMenus.forEach(menu => menu.addEventListener("click", (event)=> {getNewsByCategory(event); closeNav();}))
+menus.forEach(menu => menu.addEventListener("click", async (event)=> await getNewsByCategory(event)))
+sideMenus.forEach(menu => menu.addEventListener("click", async (event)=> {await getNewsByCategory(event); closeNav();}))
 let topButton = document.getElementById("topBtn");
 window.onscroll = function() {scrollFunction()};
 document.getElementById("search-input").addEventListener("keydown", function(event) {
@@ -137,10 +137,10 @@ const paginationRender = () => {
 
 }
 
-const moveToPage = (pageNum) => {
+const moveToPage = async (pageNum) => {
     console.log("movetopage", pageNum)
     page = pageNum
-    getNews()
+    await getNews()
 }
 
 const openNav = () => {
