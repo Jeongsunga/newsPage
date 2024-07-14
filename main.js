@@ -109,7 +109,7 @@ const paginationRender = () => {
 
     let paginationHTML = ''
 
-    if(firstPage >= 6){
+    if(page > 1){
         paginationHTML = `<li class="page-item" onclick="moveToPage(1)">
                             <a class="page-link" href='#'>&lt;&lt;</a>
                         </li>
@@ -125,7 +125,7 @@ const paginationRender = () => {
                             </li>`
     }
 
-    if(lastPage < totalPages){
+    if(page < totalPages){
         paginationHTML += `<li class="page-item" onclick="moveToPage(${page + 1})">
                         <a  class="page-link" href='#'>&gt;</a>
                        </li>
